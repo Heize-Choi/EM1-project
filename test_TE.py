@@ -30,7 +30,7 @@ print(mistakes)
 
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-with open("timelogs.txt", "a", encoding="utf-8") as f:
+with open("test_result(new).txt", "a", encoding="utf-8") as f:
     f.write(
         f"{sum(timelap)/len(timelap):.2f}   {wrongtimes}    {mistakes}    {timestamp}\n"
     )
