@@ -1,6 +1,6 @@
 %1. Impoting Data(unit=minute)
-sleepTbl = readtable('Example_Sleep_Wake_Schedule_3.csv');
-lightTbl = readtable('illuminance_2.csv');
+sleepTbl = readtable('Example_Sleep_Wake_Schedule.csv');
+lightTbl = readtable('illuminance.csv');
 sleepTbl.sleep_start = datetime(sleepTbl.sleep_start, 'InputFormat','yyyy-MM-dd HH:mm:ss');
 sleepTbl.sleep_end   = datetime(sleepTbl.sleep_end,   'InputFormat','yyyy-MM-dd HH:mm:ss');
 lightTbl.timestamp   = datetime(lightTbl.timestamp,   'InputFormat','yyyy-MM-dd HH:mm:ss');
@@ -256,7 +256,7 @@ R2_all = 1 - (ss_res_all / ss_tot_all);
 fprintf('전체 구간 대표 R²: %.4f\n', R2_all);
 
 %%
-T = readtable('timelogs.csv', 'ReadVariableNames', false); % 헤더 없는 파일
+T = readtable('test_result.csv', 'ReadVariableNames', false); % 헤더 없는 파일
 test_time = T{:,1};
 timestamp_raw = string(T{:,4});
 error_times=T{:,2};
