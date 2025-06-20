@@ -10,7 +10,7 @@ def measure_illuminance(writer):
     try:
         ret, frame = cap.read()
         if not ret:
-            logging.warning("카메라 프레임 읽기 실패")
+            logging.warning("failure for camera")
             return
 
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -19,7 +19,7 @@ def measure_illuminance(writer):
         writer.writerow([timestamp, f"{illuminance:.2f}"])
         logging.info(f"{timestamp} - Illuminance: {illuminance:.2f}")
     except Exception as e:
-        logging.error(f"측정 중 예외: {e}")
+        logging.error(f"예외: {e}")
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO,
@@ -34,14 +34,14 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # CSV 파일 준비
-    f = open('illuminance4.csv', 'w', newline='')
+    f = open('illuminance(new).csv', 'w', newline='')
     writer = csv.writer(f)
     writer.writerow(['Timestamp', 'Illuminance'])
 
     # 카메라 열기
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
-        print("카메라를 열 수 없습니다.")
+        print("No camera.")
         f.close()
         sys.exit(1)
 
